@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Products {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+<div class="col-1 back m-3">
+  <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+</div>
+<section id="products" class="container">
+  <div class="container text-center">
+    <h1 class="mb-3">PRODUCTS</h1>
+    <a href="/admin/addProduct" class="btn btn-secondary mt-3 mb-5">ADD A PRODUCT</a>
+  </div>
+    <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">picture</th>
+            <th scope="col">title</th>
+            <th scope="col">artist</th>
+            <th scope="col">category</th>
+            <th scope="col">size</th>
+            <th scope="col">price</th>
+            <th scope="col">quantity</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+          <tr>
+            <th scope="row">{{ product.id }}</th>
+            <td><img src="{{ product.picture }}" width="100px" height="100px" alt="Album picture"></td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.artist }}</td>
+            <td>{{ product.category_name }}</td>
+            <td>{{ product.size_name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>
+              <a href="/admin/editProduct/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
+              <a href="/admin/showProduct/{{ product.id }}" class="btn btn-outline-success">SHOW</a>
+              <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#delete{{ product.id }}">DELETE</a>
+            </td>
+            <div class="modal fade" id="delete{{ product.id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Are you sure you want to delete this?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                    <a href="/admin/deleteProduct/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</section>
+
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
+
