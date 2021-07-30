@@ -1,3 +1,16 @@
+Vintage Vibe is a school project based in MVC technology. Welcome to your vinyl shop online!
+
+Author
+👤 Wilders from Wild Code School
+
+Github: @justGiletta
+Github: @PaulineGB
+Github: @Duriezantoine
+Github: @amine-haddad
+Github: @eddyRAJA
+Github: @Annegren
+Teacher: @JennyViannay
+
 ## Steps
 
 1. Clone the repo from Github.
